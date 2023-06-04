@@ -2091,8 +2091,8 @@ Plot2DrugSurface <- function(data,
   colnames(extended.scores) <- extend.col.dose
   
   # align with the input scores_mat
-  extended.scores[extended.scores < min(scores_mat)] = min(scores_mat)
-  extended.scores[extended.scores > max(scores_mat)] = max(scores_mat)
+  extended.scores[extended.scores < min(scores_mat)] = min(scores_mat) + 0.001
+  extended.scores[extended.scores > max(scores_mat)] = max(scores_mat) - 0.001
   
   return(extended.scores)
 }
