@@ -2,6 +2,7 @@
 # Web application: http://synergyfinder.org
 # Mirror site 1: https://tangsoftwarelab.shinyapps.io/synergyfinder/
 # Mirror site 2: http://synergyfinderplus.org
+# Standalone version: https://sourceforge.net/projects/synergyfinder/
 [![Build Status](https://travis-ci.org/hly89/synergyfinder.svg?branch=master)](https://travis-ci.org/hly89/synergyfinder)
 
 ## Introduction
