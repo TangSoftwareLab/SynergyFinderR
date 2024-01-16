@@ -1,5 +1,5 @@
 # SynergyFinder: Calculate and Visualize Synergy Scores for Drug Combinations
-# Web application: https://synergyfinder.org
+# Web application: http://synergyfinder.org
 
 [![Build Status](https://travis-ci.org/hly89/synergyfinder.svg?branch=master)](https://travis-ci.org/hly89/synergyfinder)
 
