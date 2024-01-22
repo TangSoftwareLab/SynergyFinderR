@@ -229,8 +229,12 @@ ReshapeData <- function(data,
           )
         }
       )
-      response <- suppressWarnings(mice::complete(imp))
-    }
+      tmp <- suppressWarnings(mice::complete(imp, action = "all"))
+      response <- tmp[[1]]
+      response$response[which(is.na(response$response_origin)==T)] = 
+        colMeans(matrix(unlist(lapply(tmp, function(x) x$response[which(is.na(x$response_origin)==T)])), nrow = 5, byrow = T))
+      
+      }
   }
   
   # 6. Dealing with replicates

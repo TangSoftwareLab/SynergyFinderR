@@ -346,12 +346,16 @@ ZIP <- function(response,
     function(x)  suppressWarnings(FitDoseResponse(x, Emin = Emin, Emax = Emax))
   )
   
-  single_drug_pred <- lapply(single_drug_model, 
-                         function(x) {
-                           data.frame(dose = x$origData$dose,
-                                      pred = stats::predict(x),
-                                      stringsAsFactors = FALSE)
-                           })
+  # bug fixed at 26.1.2024, avoid using adjusted non-zero dose
+  # single_drug_pred <- lapply(single_drug_model, 
+  #                        function(x) {
+  #                          data.frame(dose = x$origData$dose,
+  #                                     pred = stats::predict(x),
+  #                                     stringsAsFactors = FALSE)
+  #                          })
+  single_drug_pred <- mapply(function(x,y){data.frame(dose = x$dose, 
+                                                      pred = predict(y))}, 
+                             single_drug_data, single_drug_model, SIMPLIFY = F)
   
   ref_zip <- expand.grid(lapply(single_drug_pred, function(x) x$dose))
   ref_zip$ZIP_ref <- apply(
